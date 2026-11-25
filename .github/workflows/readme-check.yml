@@ -1,0 +1,28 @@
+name: README checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint + GitHub link checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+      - name: Test the validator itself
+        run: python3 -m unittest discover -s tests -v
+      - name: Validate README (structure, TOC, tables, links, assets)
+        run: python3 scripts/check_readme.py --strict
+      - name: Validate listed GitHub projects and star ordering
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/check_readme.py --online

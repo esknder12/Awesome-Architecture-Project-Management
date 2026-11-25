@@ -1,0 +1,25 @@
+name: Link health
+
+# Marketing sites change and expire; probe them on a schedule rather than on
+# every PR so a transient 503 never blocks a contribution.
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  external-links:
+    name: SaaS site reachability
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+      - name: Probe linked product sites
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/check_readme.py --online --check-external
