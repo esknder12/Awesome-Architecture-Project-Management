@@ -1,0 +1,30 @@
+name: Link health
+
+# Marketing sites change and expire; probe them on a schedule rather than on
+# every PR so a transient 503 never blocks a contribution.
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  external-links:
+    name: SaaS site reachability
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      # Pin to major.minor (3.11) rather than the exact patch: .python-version
+      # says 3.11.4, but runner images only ship a subset of patch releases.
+      - name: Resolve Python version
+        id: py
+        run: echo "version=$(cut -d. -f1,2 .python-version)" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ steps.py.outputs.version }}
+      - name: Probe linked product sites
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/check_readme.py --online --check-external

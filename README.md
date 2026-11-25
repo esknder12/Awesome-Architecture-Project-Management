@@ -19,6 +19,7 @@
 ---
 
 ### 📑 Table of Contents
+- [📌 Top Architecture & Engineering (A/E) Project Management Ecosystem](#-top-architecture--engineering-ae-project-management-ecosystem)
 - [🌐 Market Size & Industry Dynamics](#-market-size--industry-dynamics)
 - [💼 SaaS & Commercial Hosted Platforms](#-saas--commercial-hosted-platforms)
 - [💻 Open-Source GitHub Projects](#-open-source-github-projects)
@@ -80,11 +81,11 @@ While purpose-built open-source A/E practice platforms are still emerging, below
 - **[Kimai](https://github.com/kimai/kimai)** <a href="https://github.com/kimai/kimai/stargazers"><img src="https://img.shields.io/github/stars/kimai/kimai?style=social&color=white" alt="Kimai Stars"/></a>  
   ⏱️ Free open-source time-tracking and invoicing application designed for tracking billable hours across multiple client projects and phases.
 
-- **[Taiga](https://github.com/taigaio/taiga-back)** <a href="https://github.com/taigaio/taiga-back/stargazers"><img src="https://img.shields.io/github/stars/taigaio/taiga-back?style=social&color=white" alt="Taiga Stars"/></a>  
-  🎨 Agile project management platform for cross-functional teams needing clean task backlogs and board workflows.
-
 - **[Speckle Server](https://github.com/specklesystems/speckle-server)** <a href="https://github.com/specklesystems/speckle-server/stargazers"><img src="https://img.shields.io/github/stars/specklesystems/speckle-server?style=social&color=white" alt="Speckle Stars"/></a>  
   🏗️ The open-source data platform for 3D AEC workflows—connects CAD/BIM models (Revit, Rhino, AutoCAD) directly to project collaboration pipelines.
+
+- **[Taiga](https://github.com/taigaio/taiga-back)** <a href="https://github.com/taigaio/taiga-back/stargazers"><img src="https://img.shields.io/github/stars/taigaio/taiga-back?style=social&color=white" alt="Taiga Stars"/></a>  
+  🎨 Agile project management platform for cross-functional teams needing clean task backlogs and board workflows.
 
 ---
 
@@ -94,6 +95,7 @@ While purpose-built open-source A/E practice platforms are still emerging, below
 2. 📝 **Add/edit** entries in `README.md` following the existing markdown table and badge formats.
 3. ℹ️ **Provide essential details**: Include tool name, URL link, brief description, pricing model, or GitHub repository URL.
 4. 🚀 **Submit a Pull Request** with a concise description of your changes.
+5. 🧪 **Run the checks** before opening the PR: `make test` (see [TESTING.md](TESTING.md)) — CI runs the same suite.
 
 ---
 
